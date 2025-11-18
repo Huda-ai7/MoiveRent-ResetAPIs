@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize("movies-lib", "root", "yourPassword", {
+const sequelize = new Sequelize("movies-lib", "root", "Hh123456", {
   dialect: "mysql",
   host: "localhost",
 });

@@ -3,8 +3,12 @@ const Movie = require("./modules/movie.js");
 const MoiveRented = require("./modules/movie-rented.js");
 
 exports.getAllMoives = async (req, res, next) => {
-  const allMoive = await Movie.findAll();
-  res.json([{ message: "all data in the table", allMoives: allMoive }]);
+  try {
+    const allMoive = await Movie.findAll();
+    res.json([{ message: "all data in the table", allMoives: allMoive }]);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 exports.getOneMoive = async (req, res, next) => {

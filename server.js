@@ -15,7 +15,7 @@ app.use(express.json());
 
 // a middelware for user
 app.use((req, res, next) => {
-  User.findByPk(2)
+  User.findByPk(1)
     .then((user) => {
       req.user = user;
       next();
@@ -26,12 +26,8 @@ app.use((req, res, next) => {
 app.use(allRoutes);
 
 // connect user to moive
-User.hasMany(Moive);
 User.belongsToMany(Moive, { through: MoiveRented });
-
-// or we could connect the two table like this
-// User.belongsToMany(Moive, { through: MoiveRented });
-// Moive.belongsToMany(User, { through: MoiveRented });
+Moive.belongsToMany(User, { through: MoiveRented });
 
 sequelize
   .sync()
